@@ -24,6 +24,7 @@ for feature_name in NUMERIC_COLUMNS:
 
 print(feature_columns)
 
+
 def make_input_fn(data_df, label_df, num_epochs=10, shuffle=True, batch_size=32):
   def input_function():
     ds = tf.data.Dataset.from_tensor_slices((dict(data_df), label_df))
@@ -45,6 +46,8 @@ result = linear_est.evaluate(eval_input_fn)
 result = list(linear_est.predict(eval_input_fn))
 print(dfeval.loc[0])
 print(result[1]['probabilities'][1])
+
+#print(dftrain.age.hist(bins=20))  ##todo: draw graph representation
 
 
 
